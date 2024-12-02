@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
@@ -32,7 +32,7 @@ const sampleCupcakes = [
     name: "Sweden",
   },
 ];
-type AccessoryArray = { id: number; name: string; slug: string }[];
+// type AccessoryArray = { id: number; name: string; slug: string }[];
 type data = typeof sampleCupcakes;
 
 /* you can use sampleCupcakes if you're stucked on step 1 */
