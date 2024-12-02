@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
+import { useEffect } from "react";
 
 /* ************************************************************************* */
 const sampleCupcakes = [
@@ -38,15 +39,22 @@ type CupcakeArray = typeof sampleCupcakes;
 /* if you're fine with step 1, just ignore this ;) */
 /* ************************************************************************* */
 
-
 function CupcakeList() {
   // Step 1: get all cupcakes
   const cupCakesData = useLoaderData() as CupcakeArray;
-  console.log({cupCakesData});
-
-
 
   // Step 3: get all accessories
+  useEffect(() => {
+    const url = "http://localhost:3310/api/accessories";
+    recoverAccessories(url)
+        
+  }, [])
+
+  async function recoverAccessories(url: string) {
+    const request = await fetch(url);
+        const data = await request.json();
+        console.log(data)
+  }
 
   // Step 5: create filter state
 
@@ -68,7 +76,7 @@ function CupcakeList() {
         {/* Step 5: filter cupcakes before repeating */}
         <li className="cupcake-item">
           {cupCakesData?.map((cupCake) => {
-            return <Cupcake  key={cupCake.id} data={cupCake}/>
+            return <Cupcake key={cupCake.id} data={cupCake} />;
           })}
         </li>
         {/* end of block */}

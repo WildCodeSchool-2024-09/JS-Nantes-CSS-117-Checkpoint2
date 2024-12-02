@@ -12,11 +12,10 @@ import Home from "./pages/Home";
 import Instructions from "./pages/Instructions";
 
 const getCupCake = () => {
-    return fetch("http://localhost:3310/api/cupcakes")
-      .then((response) => response.json())
-      .catch(() => []);
+  return fetch("http://localhost:3310/api/cupcakes")
+    .then((response) => response.json())
+    .catch(() => []);
 };
-
 
 const router = createBrowserRouter([
   {

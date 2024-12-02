@@ -15,5 +15,4 @@ function getFibonacciSequence(size: number): number[] {
   return [0, 1];
 }
 
-
 export default getFibonacciSequence;
