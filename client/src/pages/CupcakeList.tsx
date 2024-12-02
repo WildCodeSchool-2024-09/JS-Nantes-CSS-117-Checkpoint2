@@ -34,7 +34,8 @@ const sampleCupcakes = [
 ];
 
 function CupcakeList() {
-  const [accessories, setAccessories] = useState<AccessoryArray>([]); // Etat pour les accessoires
+  const [accessories, setAccessories] = useState<AccessoryArray>([]);
+  const [selectedAccessory, setSelectedAccessory] = useState<string>("");
 
   useEffect(() => {
     async function fetchAccessories() {
@@ -54,13 +55,21 @@ function CupcakeList() {
     fetchAccessories();
   }, []);
 
+  const filteredCupcakes = sampleCupcakes.filter((cupcake) =>
+    selectedAccessory ? cupcake.accessory_id === selectedAccessory : true,
+  );
+
   return (
     <>
       <h1>My cupcakes</h1>
       <form className="center">
         <label htmlFor="cupcake-select">
           Filter by{" "}
-          <select id="cupcake-select">
+          <select
+            id="cupcake-select"
+            value={selectedAccessory}
+            onChange={(e) => setSelectedAccessory(e.target.value)}
+          >
             <option value="">---</option>
             <option value="1">Cherry</option>
             <option value="2">Donut</option>
@@ -76,7 +85,7 @@ function CupcakeList() {
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
-        {sampleCupcakes.map((cupcake) => (
+        {filteredCupcakes.map((cupcake) => (
           <li className="cupcake-item" key={cupcake.id}>
             <Cupcake data={cupcake} />
           </li>
