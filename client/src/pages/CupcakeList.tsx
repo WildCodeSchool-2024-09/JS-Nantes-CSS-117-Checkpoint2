@@ -38,8 +38,19 @@ type CupcakeArray = typeof sampleCupcakes;
 /* if you're fine with step 1, just ignore this ;) */
 /* ************************************************************************* */
 
+type CupcakeType = {
+  id: number;
+  name: string;
+  accessory: string;
+  color1: string;
+  color2: string;
+  color3: string;
+};
+
 function CupcakeList() {
-  // Step 1: get all cupcakes
+  // Définir l'état pour stocker les cupcakes
+  const cupcakes = useLoaderData() as CupcakeType[];
+
   console.info(useLoaderData() as CupcakeArray);
 
   // Step 3: get all accessories
