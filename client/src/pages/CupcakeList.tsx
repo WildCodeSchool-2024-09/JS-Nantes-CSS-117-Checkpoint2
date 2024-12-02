@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
 /* ************************************************************************* */
@@ -34,7 +34,7 @@ const sampleCupcakes = [
   },
 ];
 
-type CupcakeArray = typeof sampleCupcakes;
+export type CupcakeArray = typeof sampleCupcakes;
 
 /* you can use sampleCupcakes if you're stucked on step 1 */
 /* if you're fine with step 1, just ignore this ;) */
@@ -92,9 +92,11 @@ function CupcakeList() {
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
         {filterTheCup.map((cupcake) => (
-          <li className="cupcake-item" key={cupcake.id}>
-            <Cupcake data={cupcake} />
-          </li>
+          <Link to={`/cupecakedetails/${cupcake.id}`} key={cupcake.id}>
+            <li className="cupcake-item">
+              <Cupcake data={cupcake} />
+            </li>
+          </Link>
         ))}
         {/* Step 5: filter cupcakes before repeating */}
         {/* end of block */}

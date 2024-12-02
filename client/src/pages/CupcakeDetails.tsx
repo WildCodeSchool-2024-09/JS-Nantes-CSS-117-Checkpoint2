@@ -1,38 +1,38 @@
-import "./Cupcake.css";
+import { useLoaderData } from "react-router-dom";
 
-export interface CupcakeProps {
-  data: {
-    accessory: string;
-    color1: string;
-    color2: string;
-    color3: string;
-    name: string;
-  };
+interface DetailsI {
+  accessory: string;
+  color1: string;
+  color2: string;
+  color3: string;
+  name: string;
 }
 
-function Cupcake({ data }: CupcakeProps) {
+function CupcakeDetails() {
+  const dataCup = useLoaderData() as DetailsI;
+
   return (
     <>
       <div className="cupcake-container">
         <div className="cupcake">
-          <div className={`accessory ${data.accessory}`} />
+          <div className={`accessory ${dataCup.accessory}`} />
           <div className="cream">
             <div
               className="cream-1"
               style={{
-                backgroundColor: data.color1,
+                backgroundColor: dataCup.color1,
               }}
             />
             <div
               className="cream-2"
               style={{
-                backgroundColor: data.color2,
+                backgroundColor: dataCup.color2,
               }}
             />
             <div
               className="cream-3"
               style={{
-                backgroundColor: data.color3,
+                backgroundColor: dataCup.color3,
               }}
             />
           </div>
@@ -49,10 +49,10 @@ function Cupcake({ data }: CupcakeProps) {
           </div>
         </div>
 
-        <div className="cupcake-name">{data.name}</div>
+        <div className="cupcake-name">{dataCup.name}</div>
       </div>
     </>
   );
 }
 
-export default Cupcake;
+export default CupcakeDetails;

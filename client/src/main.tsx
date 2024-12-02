@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 /* ************************************************************************* */
 
 import App from "./App";
-
+import CupcakeDetails from "./pages/CupcakeDetails";
 import CupcakeList from "./pages/CupcakeList";
 import Home from "./pages/Home";
 import Instructions from "./pages/Instructions";
@@ -29,6 +29,12 @@ const router = createBrowserRouter([
         element: <CupcakeList />,
         loader: () => fetch("http://localhost:3310/api/cupcakes"),
         // Step 1: load data here
+      },
+      {
+        path: "/cupecakedetails/:id",
+        element: <CupcakeDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3310/api/cupcakes/${params.id}`),
       },
     ],
   },
