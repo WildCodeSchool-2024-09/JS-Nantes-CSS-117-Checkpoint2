@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
 import Cupcake from "../components/Cupcake";
 const [data, setData] = useState(0);
 /* ************************************************************************* */
@@ -44,11 +44,13 @@ type CupcakeArray = typeof sampleCupcakes;
 /* ************************************************************************* */
 
 function CupcakeList() {
-  fetch("http://localhost:3310/api/cupcakes")
-    .then((response) => response.json())
-    .then((data) => {
-      setData(data);
-    });
+  useEffect(() => {
+    fetch("http://localhost:3310/api/cupcakes")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data.accessories.id);
+      });
+  });
   const numbers = [1, 2, 3, 4];
   const new_numbers = [];
   for (const i = 0; i < numbers.length; ) {
