@@ -10,8 +10,14 @@ Exemples :
 */
 
 function countLetters(givenString: string, letter: string): number {
-  // Your code here !
-  return 0;
+  const givenArray = Array.from(givenString);
+  console.log(givenArray)
+  const lettersToFind = givenArray.filter((char) => {
+    return char === letter;
+  })
+  console.log(lettersToFind);
+  console.log(lettersToFind.length)
+  return lettersToFind.length;
 }
 
 export default countLetters;

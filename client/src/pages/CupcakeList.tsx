@@ -38,9 +38,13 @@ type CupcakeArray = typeof sampleCupcakes;
 /* if you're fine with step 1, just ignore this ;) */
 /* ************************************************************************* */
 
+
 function CupcakeList() {
   // Step 1: get all cupcakes
-  console.info(useLoaderData() as CupcakeArray);
+  const cupCakesData = useLoaderData() as CupcakeArray;
+  console.log({cupCakesData});
+
+
 
   // Step 3: get all accessories
 
@@ -63,7 +67,9 @@ function CupcakeList() {
         {/* Step 2: repeat this block for each cupcake */}
         {/* Step 5: filter cupcakes before repeating */}
         <li className="cupcake-item">
-          <Cupcake data={sampleCupcakes[0]} />
+          {cupCakesData?.map((cupCake) => {
+            return <Cupcake  key={cupCake.id} data={cupCake}/>
+          })}
         </li>
         {/* end of block */}
       </ul>
