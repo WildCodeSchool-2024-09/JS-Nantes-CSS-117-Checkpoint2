@@ -48,8 +48,8 @@ function CupcakeList() {
 
   const options = [
     {
-      label:"...",
-      value:"",
+      label: "...",
+      value: "",
     },
     {
       label: "Cherry",
@@ -96,8 +96,10 @@ function CupcakeList() {
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
           <select id="cupcake-select">
-          {options.map((option) => (
-              <option value={option.value}>{option.label}</option>
+            {options.map((option) => (
+              <option key={option.label} value={option.value}>
+                {option.label}
+              </option>
             ))}
             {/* Step 4: add an option for each accessory */}
           </select>
