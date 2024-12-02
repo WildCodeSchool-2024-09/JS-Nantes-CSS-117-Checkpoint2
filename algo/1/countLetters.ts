@@ -11,7 +11,19 @@ Exemples :
 
 function countLetters(givenString: string, letter: string): number {
   // Your code here !
-  return 0;
+  let count = 0;
+
+  const charArray = givenString.split("");
+
+  // console.log(charArray);
+
+  charArray.map((char) => {
+    if (char === letter) {
+      count += 1;
+    }
+  });
+
+  return count;
 }
 
 export default countLetters;
