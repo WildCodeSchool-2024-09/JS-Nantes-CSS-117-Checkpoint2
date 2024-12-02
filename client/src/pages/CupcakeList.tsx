@@ -36,8 +36,6 @@ const sampleCupcakes = [
   },
 ];
 
-useLoaderData;
-
 type CupcakeArray = typeof sampleCupcakes;
 
 /* you can use sampleCupcakes if you're stucked on step 1 */
@@ -45,6 +43,12 @@ type CupcakeArray = typeof sampleCupcakes;
 /* ************************************************************************* */
 
 function CupcakeList() {
+  const numbers = [1, 2, 3, 4];
+  const new_numbers = [];
+  for (const i = 0; i < numbers.length; ) {
+    new_numbers[i] = numbers[i];
+  }
+
   // Step 1: get all cupcakes
   console.info(useLoaderData() as CupcakeArray);
 
