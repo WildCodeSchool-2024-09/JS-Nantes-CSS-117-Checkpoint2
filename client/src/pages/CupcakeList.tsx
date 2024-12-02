@@ -11,6 +11,8 @@ const sampleCupcakes = [
     color2: "white",
     color3: "red",
     name: "France",
+
+    loader: "cupcakesLoader",
   },
   {
     id: 11,
@@ -20,6 +22,7 @@ const sampleCupcakes = [
     color2: "red",
     color3: "black",
     name: "Germany",
+    loader: "cupcakesLoader",
   },
   {
     id: 27,
@@ -29,8 +32,11 @@ const sampleCupcakes = [
     color2: "blue",
     color3: "blue",
     name: "Sweden",
+    loader: "cupcakesLoader",
   },
 ];
+
+useLoaderData;
 
 type CupcakeArray = typeof sampleCupcakes;
 
