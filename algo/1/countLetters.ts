@@ -10,8 +10,16 @@ Exemples :
 */
 
 function countLetters(givenString: string, letter: string): number {
-  // Your code here !
-  return 0;
+  const split = givenString.split("");
+  let count = 0;
+  for (let i = 0; i < givenString.length; i++) {
+    if (split[i] === letter) {
+      count++;
+    } else if (split[i] === undefined) {
+      count;
+    }
+  }
+  return count;
 }
 
 export default countLetters;

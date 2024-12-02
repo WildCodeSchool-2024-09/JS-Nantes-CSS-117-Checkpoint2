@@ -1,3 +1,4 @@
+// import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
@@ -40,7 +41,14 @@ type CupcakeArray = typeof sampleCupcakes;
 
 function CupcakeList() {
   // Step 1: get all cupcakes
-  console.info(useLoaderData() as CupcakeArray);
+  const data = useLoaderData() as CupcakeArray;
+
+  // const [acces, setAcces] = useState(null);
+  // useEffect(() => {
+  // 	fetch("http://localhost:3310/api/accessories")
+  // 		.then((response) => response.json())
+  // 		.then((res) => setAcces(res));
+  // }, []);
 
   // Step 3: get all accessories
 
@@ -62,9 +70,14 @@ function CupcakeList() {
       <ul className="cupcake-list" id="cupcake-list">
         {/* Step 2: repeat this block for each cupcake */}
         {/* Step 5: filter cupcakes before repeating */}
-        <li className="cupcake-item">
-          <Cupcake data={sampleCupcakes[0]} />
-        </li>
+        {data?.map((el) => {
+          return (
+            <li className="cupcake-item" key={el.id}>
+              <Cupcake data={el} />
+            </li>
+          );
+        })}
+
         {/* end of block */}
       </ul>
     </>
