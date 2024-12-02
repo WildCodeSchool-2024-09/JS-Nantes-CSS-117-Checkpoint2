@@ -4,6 +4,10 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 /* ************************************************************************* */
+async function CupcakeLoader() {
+  const response = await fetch("http://localhost:3310/api/cupcakes");
+  return response.json();
+}
 
 import App from "./App";
 
@@ -27,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/cupcakes",
         element: <CupcakeList />,
+        loader: CupcakeLoader,
         // Step 1: load data here
       },
     ],
