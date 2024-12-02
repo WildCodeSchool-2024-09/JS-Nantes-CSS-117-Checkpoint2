@@ -44,34 +44,6 @@ function CupcakeList() {
   // Step 1: get all cupcakes
   const cupCakesData = useLoaderData() as CupcakeArray;
   const [accesories, setAccessories] = useState([] as AccessoryArray);
-  console.info(accesories);
-
-  const options = [
-    {
-      label: "...",
-      value: "",
-    },
-    {
-      label: "Cherry",
-      value: "1",
-    },
-    {
-      label: "Donut",
-      value: "2",
-    },
-    {
-      label: "Chocolate",
-      value: "3",
-    },
-    {
-      label: "Wild",
-      value: "4",
-    },
-    {
-      label: "Christmas Candy",
-      value: "5",
-    },
-  ];
 
   // Step 3: get all accessories
   useEffect(() => {
@@ -96,9 +68,12 @@ function CupcakeList() {
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
           <select id="cupcake-select">
-            {options.map((option) => (
-              <option key={option.label} value={option.value}>
-                {option.label}
+            {accesories.map((option) => (
+              <option
+                key={option.name}
+                value={option.slug} /*onChange={(event)=>handleChange(event)}*/
+              >
+                {option.name}
               </option>
             ))}
             {/* Step 4: add an option for each accessory */}
