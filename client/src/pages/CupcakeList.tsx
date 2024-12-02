@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
-/* ************************************************************************* */
+// Exemple de cupcakes pour initialiser les données
 const sampleCupcakes = [
   {
     id: 10,
@@ -34,38 +34,29 @@ const sampleCupcakes = [
 
 type CupcakeArray = typeof sampleCupcakes;
 
-/* you can use sampleCupcakes if you're stucked on step 1 */
-/* if you're fine with step 1, just ignore this ;) */
-/* ************************************************************************* */
-
 function CupcakeList() {
-  // Step 1: get all cupcakes
   console.info(useLoaderData() as CupcakeArray);
-
-  // Step 3: get all accessories
-
-  // Step 5: create filter state
 
   return (
     <>
       <h1>My cupcakes</h1>
       <form className="center">
         <label htmlFor="cupcake-select">
-          {/* Step 5: use a controlled component for select */}
+          {}
           Filter by{" "}
           <select id="cupcake-select">
             <option value="">---</option>
-            {/* Step 4: add an option for each accessory */}
+            {}
           </select>
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
-        {/* Step 2: repeat this block for each cupcake */}
-        {/* Step 5: filter cupcakes before repeating */}
-        <li className="cupcake-item">
-          <Cupcake data={sampleCupcakes[0]} />
-        </li>
-        {/* end of block */}
+        {}
+        {sampleCupcakes.map((cupcake) => (
+          <li className="cupcake-item" key={cupcake.id}>
+            <Cupcake data={cupcake} />
+          </li>
+        ))}
       </ul>
     </>
   );
