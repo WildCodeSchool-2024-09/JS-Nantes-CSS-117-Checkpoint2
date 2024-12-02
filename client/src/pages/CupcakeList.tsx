@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 const [data, setData] = useState(0);
@@ -48,7 +48,7 @@ function CupcakeList() {
     fetch("http://localhost:3310/api/cupcakes")
       .then((response) => response.json())
       .then((data) => {
-        setData(data.accessories.id);
+        setData(data);
       });
   });
   const numbers = [1, 2, 3, 4];
@@ -73,14 +73,13 @@ function CupcakeList() {
       <h1>My cupcakes</h1>
       <form className="center">
         <div>
-          {" "}
           <p>{data}</p>
         </div>
         <label htmlFor="cupcake-select">
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
           <select id="cupcake-select">
-            <option value="">---</option>
+            <option value="christmas-candy">--</option>
             {/* Step 4: add an option for each accessory */}
           </select>
         </label>
