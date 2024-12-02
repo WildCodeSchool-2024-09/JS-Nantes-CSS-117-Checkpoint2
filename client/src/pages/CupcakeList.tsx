@@ -45,7 +45,8 @@ function CupcakeList() {
   // Step 3: get all accessories
 
   // Step 5: create filter state
-
+  const cupcakes = useLoaderData();
+  console.info(cupcakes);
   return (
     <>
       <h1>My cupcakes</h1>
