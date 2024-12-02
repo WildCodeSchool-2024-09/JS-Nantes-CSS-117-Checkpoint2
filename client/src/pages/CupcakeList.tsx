@@ -46,6 +46,7 @@ function CupcakeList() {
         }
         const data = await response.json();
         setAccessories(data);
+        console.info("Accessoires récupérés:", data);
         console.info(data);
       } catch (error) {
         console.error("Erreur lors du fetch des accessoires", error);
