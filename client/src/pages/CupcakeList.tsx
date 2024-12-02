@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Cupcake from "../components/Cupcake";
 
-// Exemple de cupcakes pour initialiser les données
+type AccessoryArray = { id: number; name: string; slug: string }[];
+
 const sampleCupcakes = [
   {
     id: 10,
@@ -32,26 +33,44 @@ const sampleCupcakes = [
   },
 ];
 
-type CupcakeArray = typeof sampleCupcakes;
-
 function CupcakeList() {
-  console.info(useLoaderData() as CupcakeArray);
+  const [accessories, setAccessories] = useState<AccessoryArray>([]); // Etat pour les accessoires
+
+  useEffect(() => {
+    async function fetchAccessories() {
+      try {
+        const response = await fetch("http://localhost:3310/api/accessories");
+        if (!response.ok) {
+          throw new Error("Erreur lors de la récupération des accessoires");
+        }
+        const data = await response.json();
+        setAccessories(data);
+        console.info(data);
+      } catch (error) {
+        console.error("Erreur lors du fetch des accessoires", error);
+      }
+    }
+
+    fetchAccessories();
+  }, []);
 
   return (
     <>
       <h1>My cupcakes</h1>
       <form className="center">
         <label htmlFor="cupcake-select">
-          {}
           Filter by{" "}
           <select id="cupcake-select">
             <option value="">---</option>
-            {}
+            {accessories.map((accessory) => (
+              <option key={accessory.id} value={accessory.slug}>
+                {accessory.name}
+              </option>
+            ))}
           </select>
         </label>
       </form>
       <ul className="cupcake-list" id="cupcake-list">
-        {}
         {sampleCupcakes.map((cupcake) => (
           <li className="cupcake-item" key={cupcake.id}>
             <Cupcake data={cupcake} />
