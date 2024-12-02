@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
@@ -12,11 +11,7 @@ const sampleData = {
   color3: "var(--default-cream-color)",
   name: "",
 };
-useEffect(() => {
-  fetch("http://localhost:3310/api/cupcakes.")
-    .then((response) => response.json())
-    .then(() => {});
-});
+
 function Home() {
   return (
     <>

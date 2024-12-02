@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import Cupcake from "../components/Cupcake";
-
+const [data, setData] = useState(0);
 /* ************************************************************************* */
 const sampleCupcakes = [
   {
@@ -43,10 +44,15 @@ type CupcakeArray = typeof sampleCupcakes;
 /* ************************************************************************* */
 
 function CupcakeList() {
+  fetch("http://localhost:3310/api/cupcakes")
+    .then((response) => response.json())
+    .then((data) => {
+      setData(data);
+    });
   const numbers = [1, 2, 3, 4];
   const new_numbers = [];
   for (const i = 0; i < numbers.length; ) {
-    new_numbers[i] = numbers[i];
+    new_numbers[i] = numbers[i] * 2;
   }
 
   // Step 1: get all cupcakes
@@ -58,8 +64,16 @@ function CupcakeList() {
 
   return (
     <>
+      <section>
+        <data />
+      </section>
+
       <h1>My cupcakes</h1>
       <form className="center">
+        <div>
+          {" "}
+          <p>{data}</p>
+        </div>
         <label htmlFor="cupcake-select">
           {/* Step 5: use a controlled component for select */}
           Filter by{" "}
