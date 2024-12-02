@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Cupcake from "../components/Cupcake";
 
 /* ************************************************************************* */
