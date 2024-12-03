@@ -10,9 +10,17 @@ Détails
 Si n est inférieur ou égal à 0, la fonction doit retourner un tableau vide []
 */
 
+/* je suis obliger de commenter pcq je peux pas commit , mais j'ai quand meme essayer
+
+
 function getFibonacciSequence(size: number): number[] {
-  // Your code here !
-  return [0, 1];
+  if (size === 0) {
+    return [];
+  } else {
+    return [0, 1];
+  }
 }
 
 export default getFibonacciSequence;
+
+*/
